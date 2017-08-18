@@ -14,7 +14,7 @@ logstash 5.5.1
 
 1. Training your model and export factor matrix to database. See: recipe_recommender.py
 
-2. Using logstash to export data to elasticsearch
+2. Using logstash to export data to elasticsearch. See: logstash.conf
 
 3. Using elasticsearch api with painless script_score to get results by custom ordering
 
