@@ -74,7 +74,8 @@ scoreAndLabels = predictions.join(ratingsTuple).map(lambda tup: tup[1])
 metrics = RegressionMetrics(scoreAndLabels)
 print("RMSE = %s" % metrics.rootMeanSquaredError)
 
-def save_facotr_to_database(factor_rdd, table):
+
+def save_factor_to_database(factor_rdd, table):
     # Map vector to string, can be store to database
     factor_rdd = factor_rdd.map(lambda r: (r[0], ','.join(map(str, r[1]))))
     # Build schema
@@ -89,9 +90,9 @@ def save_facotr_to_database(factor_rdd, table):
         option("password", password).\
         save()
 
-save_facotr_to_database(model.userFeatures(), "user_factor")
+save_factor_to_database(model.userFeatures(), "user_factor")
 
-save_facotr_to_database(model.productFeatures(), "recipe_factor")
+save_factor_to_database(model.productFeatures(), "recipe_factor")
 
 
 # Recommendations top N recipes for all user, also RDD
