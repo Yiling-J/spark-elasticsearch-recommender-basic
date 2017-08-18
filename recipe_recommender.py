@@ -56,7 +56,7 @@ all = all.dropDuplicates(['uid', 'rid'])
 all = all.rdd.map(lambda r: (r.uid, r.rid, max(r.rating, r.rating2, r.rating3)))
 
 # Train
-model = ALS.train(all, 30, 10)  # 30 factors and 20 iterations
+model = ALS.train(all, 30, 10)  # 30 factors and 10 iterations
 
 # Root mean squared error
 schema = types.StructType(
